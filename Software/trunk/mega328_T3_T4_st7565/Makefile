@@ -147,12 +147,12 @@ CFLAGS += -DVOLUME_VALUE=48
 # If option WITH_LCD_ST7565 is present one of the following fonts should be
 # choosen. With a font width below 8 more than 16 characters can be shown in one display line.
 #CFLAGS += -DFONT_5X8
-#CFLAGS += -DFONT_6X8
+CFLAGS += -DFONT_6X8
 #CFLAGS += -DFONT_8X8
 #CFLAGS += -DFONT_7X12
 #CFLAGS += -DFONT_8X12thin
 #CFLAGS += -DFONT_8X14
-CFLAGS += -DFONT_8X15
+#CFLAGS += -DFONT_8X15
 #CFLAGS += -DFONT_8X16
 #CFLAGS += -DFONT_8X16thin
 
@@ -228,14 +228,14 @@ CFLAGS += -DC_H_KORR=0
 # The WITH_UART option enables the software UART  (TTL level output at Pin PC3, 26).
 # If the option is deselected, PC3 can be used as external voltage input with a
 # 10:1 resistor divider.
-#CFLAGS += -DWITH_UART
+CFLAGS += -DWITH_UART
 
 # With option TQFP_ADC6 or/and TQFP_ADC7 you can use the additional pins of the TQFP or
 # the QFN package for external analog input. You should install a 10:1 voltage dividers
 # on the selected pin(s).
 # If both pins are defined, both voltages are measured with the voltage measure function.
 # But for zener diode measurement the ADC6 pin is used, if both pins are defined.
-#CFLAGS += -DTQFP_ADC6
+CFLAGS += -DTQFP_ADC6 -DTQFP_ADC7
 
 # For ATmega8/168/328 processor the option WITH_VEXT can only be set, if the PC3 pin
 # is not used for serial output (WITH_UART option).
@@ -325,7 +325,7 @@ CFLAGS += -DBAT_CHECK
 # If your 9V supply has a diode installed, use the BAT_OUT=600 form to specify the
 # threshold voltage of your diode to adjust the output value.
 # This threshold level is added to LCD-output and does not affect the voltage checking levels.
-CFLAGS += -DBAT_OUT=150
+CFLAGS += -DBAT_OUT=50
 
 # To adjust the warning-level and poor-level of battery check to the capability of a
 # low drop voltage regulator, you can specify the Option BAT_POOR=5400 .
@@ -336,7 +336,7 @@ CFLAGS += -DBAT_OUT=150
 # The warning level is 0.1V higher than the specified poor level (<=1.3V).
 # Setting the poor level to low values is not recommended for rechargeable Batteries,
 # because this increase the danger for deep discharge!!
-CFLAGS += -DBAT_POOR=6400
+CFLAGS += -DBAT_POOR=3650
 
 # You can set a upper battery voltage limit in mV units for battery operation mode.
 # The operation time of additional functions is limited with the battery operation mode. 
@@ -360,7 +360,8 @@ INHIBIT_SLEEP_MODE = 0
 
 # Select your programmer type, speed and port, if you wish to use avrdude.
 # setting for DIAMEX ALL_AVR, Atmel AVRISP-mkII
-PROGRAMMER=avrispmkII
+#PROGRAMMER=avrispmkII
+PROGRAMMER=usbasp
 BitClock=1.0
 PORT=usb
 # setting for USBasp

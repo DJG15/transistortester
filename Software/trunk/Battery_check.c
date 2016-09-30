@@ -54,12 +54,12 @@ void Battery_check(void) {
  #if (BAT_POOR > 5300)
   // use .8 V difference to Warn-Level
   #define WARN_LEVEL (((unsigned long)(BAT_POOR+800)*(unsigned long)BAT_DENOMINATOR)/BAT_NUMERATOR)
- #elif (BAT_POOR > 3249)
+ #elif (BAT_POOR > 3749)
   // less than 5.4 V only .4V difference to Warn-Level
   #define WARN_LEVEL (((unsigned long)(BAT_POOR+400)*(unsigned long)BAT_DENOMINATOR)/BAT_NUMERATOR)
  #elif (BAT_POOR > 1299)
   // less than 2.9 V only .2V difference to Warn-Level
-  #define WARN_LEVEL (((unsigned long)(BAT_POOR+200)*(unsigned long)BAT_DENOMINATOR)/BAT_NUMERATOR)
+  #define WARN_LEVEL (((unsigned long)(BAT_POOR+100)*(unsigned long)BAT_DENOMINATOR)/BAT_NUMERATOR)
  #else
   // less than 1.3 V only .1V difference to Warn-Level
   #define WARN_LEVEL (((unsigned long)(BAT_POOR+100)*(unsigned long)BAT_DENOMINATOR)/BAT_NUMERATOR)
