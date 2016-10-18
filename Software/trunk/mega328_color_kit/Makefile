@@ -66,12 +66,12 @@ CFLAGS += -DWITH_ROTARY_SWITCH=2
 # Select your language:
 # Available languages are: LANG_BRASIL, LANG_CZECH, LANG_DUTCH, LANG_ENGLISH, LANG_GERMAN, LANG_HUNGARIAN, LANG_ITALIAN,
 #                          LANG_LITHUANIAN, LANG_POLISH, LANG_RUSSIAN , LANG_SLOVAK, LANG_SLOVENE, LANG_SPANISH, LANG_UKRAINIAN
-UI_LANGUAGE = LANG_ENGLISH
+UI_LANGUAGE = LANG_RUSSIAN
 
 # The LCD_CYRILLIC option is necessary, if you have a display with cyrillic characterset.
 # This lcd-display don't have a character for Ohm and for µ (micro).
 # Russian language requires a LCD controller with russian characterset and option LCD_CYRILLIC!
-#CFLAGS += -DLCD_CYRILLIC
+CFLAGS += -DLCD_CYRILLIC
 
 # The LCD_DOGM option must be set for support of the DOG-M type of LCD modules with ST7036 controller.
 # For this LCD type the contrast must be set with software command.
@@ -132,7 +132,7 @@ LCD_ST7565_RESISTOR_RATIO = 4
 # This option is only possible, if horizontal/vertical exchange is supported by the controller.
 CFLAGS += -DLCD_SCREEN_ROTATE=1
 # If LCD_ST7565 option is set to 1: Flip the display's horizontal direction.
-CFLAGS += -DLCD_ST7565_H_FLIP=0
+#CFLAGS += -DLCD_ST7565_H_FLIP=0
 # With LCD_ST7565_H_OFFSET you can specify a horizontal pixel offset to the display window.
 # The controller knows 132 horizontal pixel, the window shows only 128 pixel.
 # OFFSET values can vary for the connected display type to 0, 2 or 4.
@@ -152,6 +152,34 @@ CFLAGS += -DLCD_ST7565_V_FLIP=1
 # set the LCD_CHANGE_COLOR option. When the value is set to 2, red and blue color is exchanged.
 CFLAGS += -DLCD_CHANGE_COLOR=2
 
+#Коды цветов для символов и фона
+#BLACK                0x0000 -Чёрный
+#WHITE                0xFFFF -Белый
+#GREY                 0xE79C -Серый     
+#GREEN                0x07E0 -Зеленый
+#BLUE                 0x001F -Синий
+#RED                  0xF800 -Красный
+#SKY                  0x5d1c -Небесный
+#YELLOW               0xffe0 -Жёлтый
+#MAGENTA              0xDEE0 -Пурпурный
+#CYAN                 0x07ff -Голубой
+#ORANGE               0xfca0 -Оранжевый
+#PINK                 0xF97F -Розовый
+#BROWN                0x8200 -Коричневый
+#VIOLET               0x9199 -Ультрафиолетовый
+#SILVER               0xa510 -Серебристый
+#GOLD                 0xa508 -Золотой
+#BEIGE                0xf77b -Бежевый
+#NAVY                 0x000F -Тёмно-синий
+#DARK_GREEN           0x03E0 -Тёмно-зелёный
+#DARK_CYAN            0x03EF -Тёмно-голубой
+#MAROON               0x7800 -Тёмно-бордовый
+#PURPLE               0x780F -Фиолетовый
+#OLIVE                0x7BE0 -Оливковый
+#LIGHT_GREY           0xC618 -Светло-серый
+#DARK_GREY            0x7BEF -Тёмно-серый
+
+
 # You can select the background color (format 5 bit red, 6 bit green, 5 bit blue)
 CFLAGS += -DLCD_BG_COLOR=0x7800
 
@@ -164,11 +192,11 @@ CFLAGS += -DLCD_FG_COLOR=0xffff
 #CFLAGS += -DFONT_6X8
 #CFLAGS += -DFONT_8X8
 #CFLAGS += -DFONT_7X12
-CFLAGS += -DFONT_8X12thin
+#CFLAGS += -DFONT_8X12thin
 #CFLAGS += -DFONT_8X14
 #CFLAGS += -DFONT_8X15
 #CFLAGS += -DFONT_8X16
-#CFLAGS += -DFONT_8X16thin
+CFLAGS += -DFONT_8X16thin
 
 # There are also different 24x32 pixel icons for presentation of the transistor symbols available.
 # you can select a special type with setting the ICON_TYPE.
@@ -177,10 +205,10 @@ CFLAGS += -DFONT_8X12thin
 CFLAGS += -DICON_TYPE=3
 
 # option BIG_TP makes the 123 for the test pins (beside the icon) bigger
-CFLAGS += -DBIG_TP
+#CFLAGS += -DBIG_TP
 # option INVERSE_TP inverse the 123 for the test pins (black on white)
 # the option INVERSE_TP disable the option BIG_TP because a frame is required
-#CFLAGS += -DINVERSE_TP
+CFLAGS += -DINVERSE_TP
 
 # Option STRIP_GRID_BOARD selects different board-layout, do not set for standard board!
 # The connection of LCD is totally different for both versions.
@@ -218,20 +246,17 @@ CFLAGS += -DSHORT_UNCAL_MSG
 # to extend the resolution of capacity measurement to about 0.01pF.
 # Setting the WITH_SamplinADC to 1 enables this feature for capacity values below 100pF.
 WITH_SamplingADC = 1
+#CFLAGS += -DWITH_XTAL
+CFLAGS += -DWITH_UJT
+CFLAGS += -DWITH_PUT
 
-# Option WITH_XTAL enables additional Xtal / Ceramic resonator tests.
-# Option can be set only together with SamplingADC=1 and OP_MHZ=16
-#CFLAGS += -DWITH_XTAL 
-# Option WITH_UJT enables additional tests for UJT (UniJunction Transistor)
-#CFLAGS += -DWITH_UJT
-# Option WITH_PUT enables additional tests for PUT (Programmable Unijunction Transistor)
-#CFLAGS += -DWITH_PUT
+
 
 # The WITH_AUTO_REF option enables reading of internal REF-voltage to get factors for the Capacity measuring.
 CFLAGS += -DWITH_AUTO_REF
 # REF_C_KORR corrects the reference Voltage for capacity measurement (<40uF) and has mV units.
 # Greater values gives lower capacity results.
-CFLAGS += -DREF_C_KORR=12
+CFLAGS += -DREF_C_KORR=11
 # REF_L_KORR corrects the reference Voltage for inductance measurement and has mV units.
 CFLAGS += -DREF_L_KORR=40
 # C_H_KORR defines a correction of 0.1% units for big capacitor measurement.
@@ -242,7 +267,7 @@ CFLAGS += -DC_H_KORR=0
 # The WITH_UART option enables the software UART  (TTL level output at Pin PC3, 26).
 # If the option is deselected, PC3 can be used as external voltage input with a
 # 10:1 resistor divider.
-CFLAGS += -DWITH_UART
+#CFLAGS += -DWITH_UART
 
 # With option TQFP_ADC6 or/and TQFP_ADC7 you can use the additional pins of the TQFP or
 # the QFN package for external analog input. You should install a 10:1 voltage dividers
@@ -255,7 +280,7 @@ CFLAGS += -DWITH_UART
 # is not used for serial output (WITH_UART option).
 # For ATmega644/1284 processor the UART has a separate pin.  Therefore the external input
 # at pin ADC3 can be enabled separate by setting the WITH_UART option.
-#CFLAGS += -DWITH_VEXT
+CFLAGS += -DWITH_VEXT
 
 #
 # If you want to measure Inductors with the resistance meter, you must specify
@@ -305,7 +330,7 @@ CFLAGS += -DUSE_EEPROM
 
 # With graphical displays the layout of pins is usually shown in long style " Pin  1=E 2=B 3=C"
 # With the NO_LONG_PINLAYOUT option the short style "Pin 123=EBC" is used
-#CFLAGS += -DNO_LONG_PINLAYOUT
+CFLAGS += -DNO_LONG_PINLAYOUT
 
 # The PULLUP_DISABLE option disable the pull-up Resistors of IO-Ports.
 # To use this option a external pull-up Resistor (10k to 30k)
@@ -314,7 +339,7 @@ CFLAGS += -DPULLUP_DISABLE
 
 # The ANZ_MESS option specifies, how often an ADC value is read and accumulated.
 # Possible values of ANZ_MESS are 5 to 200 .
-CFLAGS += -DANZ_MESS=25
+CFLAGS += -DANZ_MESS=55
 
 
 # The POWER_OFF option enables the power off function, otherwise loop measurements infinitely
@@ -364,8 +389,8 @@ CFLAGS += -DBAT_POOR=6400
 CFLAGS += -DBAT_NUMERATOR=133
 CFLAGS += -DBAT_DENOMINATOR=33
 # Voltage divider for the external zener voltage measurement 180k / 20k = 10/1
-#CFLAGS += -DEXT_NUMERATOR=10
-#CFLAGS += -DEXT_DENOMINATOR=1
+CFLAGS += -DEXT_NUMERATOR=10
+CFLAGS += -DEXT_DENOMINATOR=1
 
 # The sleep mode of the ATmega168 or ATmega328 is normally used by the software to save current.
 # You can inhibit this with the option INHIBIT_SLEEP_MODE .
