@@ -198,7 +198,7 @@ CFLAGS += -DAUTO_CAL
 # Normally a long text is shown, which explains the steps of calibration.
 # You can prevent the long explanation by setting the SHORT_UNCAL_MSG option.
 # With this option set, only a hint of one line is shown.
-#CFLAGS += -DSHORT_UNCAL_MSG
+CFLAGS += -DSHORT_UNCAL_MSG
 
 # You can extend the measurement feature by use of a sampling mode for the ADC converter
 # to extend the resolution of capacity measurement to about 0.01pF.
@@ -209,9 +209,9 @@ WITH_SamplingADC = 1
 # Option can be set only together with SamplingADC=1 and OP_MHZ=16
 #CFLAGS += -DWITH_XTAL 
 # Option WITH_UJT enables additional tests for UJT (UniJunction Transistor)
-#CFLAGS += -DWITH_UJT
+CFLAGS += -DWITH_UJT
 # Option WITH_PUT enables additional tests for PUT (Programmable Unijunction Transistor)
-#CFLAGS += -DWITH_PUT
+CFLAGS += -DWITH_PUT
 
 # The WITH_AUTO_REF option enables reading of internal REF-voltage to get factors for the Capacity measuring.
 CFLAGS += -DWITH_AUTO_REF
@@ -241,7 +241,7 @@ CFLAGS += -DTQFP_ADC6 -DTQFP_ADC7
 # is not used for serial output (WITH_UART option).
 # For ATmega644/1284 processor the UART has a separate pin.  Therefore the external input
 # at pin ADC3 can be enabled separate by setting the WITH_UART option.
-#CFLAGS += -DWITH_VEXT
+CFLAGS += -DWITH_VEXT
 
 #
 # If you want to measure Inductors with the resistance meter, you must specify
