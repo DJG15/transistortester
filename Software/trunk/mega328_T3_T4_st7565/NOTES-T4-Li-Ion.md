@@ -7,8 +7,10 @@ This is for LCR meter marked QS2015-T4, but should work for other T4
 
 * Add Li-Ion battery, charger, step-up
 * This model of the tester needs internal pullup resistors enabled. They was
-  (accidentally?) disabled in svn rev 661 (svn2github rev 90effc4) in
-  mega328_T3_T4_st7565/Makefile
+  (accidentally?) disabled in svn rev 661 (svn2github rev
+  90effc4) in mega328_T3_T4_st7565/Makefile,
+  but reenabled in svn rev 693 (svn2github rev
+  8500b6c).
 * Use smaller font
 
 ## HOWTO
@@ -20,6 +22,17 @@ This is for LCR meter marked QS2015-T4, but should work for other T4
     ```
 
   Fuses should be: HFUSE=0x01, EFUSE=0xD7, LFUSE=0xFF
+
+## TODO
+
+* Connect battery and power input bypassing charger battery protection.
+* Power directly from USB via schottky diode, should enable DC_Pwr_Mode.
+* Hardware pull-up instead of disabling PULLUP_DISABLE.
+* USB to UART converter, bootloader.
+* Integration with [sigrok](http://sigrok.org/)?
+* Voltage measurement input.
+* Step-up for measuring zener diodes?
+* DS18B20? more sensors?
 
 ## References
 
