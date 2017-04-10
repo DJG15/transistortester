@@ -5,29 +5,23 @@ This is for LCR meter marked QS2015-T4, but should work for other T4
 
 ## Changes
 
-* Add Li-Ion battery, charger, step-up
-* This model of the tester needs internal pullup resistors enabled. They was
-  (accidentally?) disabled in svn rev 661 (svn2github rev
-  90effc4) in mega328_T3_T4_st7565/Makefile,
-  but reenabled in svn rev 693 (svn2github rev
-  8500b6c).
-* Use smaller font
+* Added Li-Ion battery, charger, step-up, direct USB power via schottky diodes.
+  Changed battery voltage thresholds in Makefile and in source.
+* Added pullup resistor from LCD RST (ATmega pin PD4) to D2 anode. Enabled
+  PULLUP_DISABLE and LCD_SPI_OPEN_COL options in Makefile.
+* Used smaller font.
 
 ## HOWTO
 
 * Flash command:
 
     ```
+    avrdude -c usbasp -p m328p -U lfuse:w:0xff:m -U hfuse:w:0x01:m -U efuse:w:0xd7:m 
     avrdude -c usbasp -p m328p -U flash:w:TransistorTester.hex:a -U eeprom:w:TransistorTester.eep:a
     ```
 
-  Fuses should be: HFUSE=0x01, EFUSE=0xD7, LFUSE=0xFF
-
 ## TODO
 
-* Connect battery and power input bypassing charger battery protection.
-* Power directly from USB via schottky diode, should enable DC_Pwr_Mode.
-* Hardware pull-up instead of disabling PULLUP_DISABLE.
 * USB to UART converter, bootloader.
 * Integration with [sigrok](http://sigrok.org/)?
 * Voltage measurement input.
