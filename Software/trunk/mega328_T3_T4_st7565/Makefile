@@ -118,7 +118,7 @@ WITH_LCD_ST7565 = 1
 # of the ATmega are used. For the RESET signal a external pull-up resistor is required, if the
 # option PULLUP_DISABLE is set. For the other signals the internal pullup resistors of the ATmega
 # are temporary used, even if option PULLUP_DISABLE is set.
-#CFLAGS += -DLCD_SPI_OPEN_COL
+CFLAGS += -DLCD_SPI_OPEN_COL
 
 # The I2C Address can be preset to a address of 0x3d instead of 0x3c by setting the constant LCD_I2C_ADDR.
 #CFLAGS += -DLCD_I2C_ADDR=0x3d
@@ -296,7 +296,7 @@ CFLAGS += -DUSE_EEPROM
 # The PULLUP_DISABLE option disable the pull-up Resistors of IO-Ports.
 # To use this option a external pull-up Resistor (10k to 30k)
 # from Pin 13 to VCC must be installed!
-#CFLAGS += -DPULLUP_DISABLE
+CFLAGS += -DPULLUP_DISABLE
 
 # The ANZ_MESS option specifies, how often an ADC value is read and accumulated.
 # Possible values of ANZ_MESS are 5 to 200 .
