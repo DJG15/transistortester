@@ -325,7 +325,8 @@ CFLAGS += -DBAT_CHECK
 # If your 9V supply has a diode installed, use the BAT_OUT=600 form to specify the
 # threshold voltage of your diode to adjust the output value.
 # This threshold level is added to LCD-output and does not affect the voltage checking levels.
-CFLAGS += -DBAT_OUT=50
+# 50 mv S9015 emitter-collector + 260 mv SS24 schottky diode
+CFLAGS += -DBAT_OUT=310
 
 # To adjust the warning-level and poor-level of battery check to the capability of a
 # low drop voltage regulator, you can specify the Option BAT_POOR=5400 .
@@ -336,7 +337,7 @@ CFLAGS += -DBAT_OUT=50
 # The warning level is 0.1V higher than the specified poor level (<=1.3V).
 # Setting the poor level to low values is not recommended for rechargeable Batteries,
 # because this increase the danger for deep discharge!!
-CFLAGS += -DBAT_POOR=3650
+CFLAGS += -DBAT_POOR=3390
 
 # You can set a upper battery voltage limit in mV units for battery operation mode.
 # The operation time of additional functions is limited with the battery operation mode. 
@@ -344,7 +345,7 @@ CFLAGS += -DBAT_POOR=3650
 # "DC_Pwr_Mode", where time limits of the additional functions are switched off.
 # The "DC_Pwr_Mode" is also started, if the battery voltage is detected below 0.9V
 # regardless to the state of the DC_PWR option.
-CFLAGS += -DDC_PWR=4500
+CFLAGS += -DDC_PWR=4300
 
 # Voltage divider for battery voltage measurement  10k / 3.3k = 133/33
 CFLAGS += -DBAT_NUMERATOR=133
