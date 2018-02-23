@@ -16,7 +16,7 @@ This is for LCR meter marked QS2015-T4, but should work for other T4
 * Flash command:
 
     ```
-    avrdude -c usbasp -p m328p -U lfuse:w:0xff:m -U hfuse:w:0x01:m -U efuse:w:0xd7:m 
+    avrdude -c usbasp -p m328p -U lfuse:w:0xff:m -U hfuse:w:0xd7:m -U efuse:w:0x01:m
     avrdude -c usbasp -p m328p -U flash:w:TransistorTester.hex:a -U eeprom:w:TransistorTester.eep:a
     ```
 
